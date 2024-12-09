@@ -1,0 +1,91 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PoirotCollectionApp.MainPage"
+             BackgroundImageSource="background.jpg">
+    
+    <Grid>
+        <!-- Background Image -->
+        <Image Source="background.jpg" 
+               Aspect="AspectFill" 
+               VerticalOptions="FillAndExpand" 
+               HorizontalOptions="FillAndExpand" />
+
+        <!-- Overlay Content -->
+        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <!-- Title -->
+            <Label Text="Hercule Poirot Book Catalogue"
+                   FontSize="36"
+                   HorizontalTextAlignment="Center"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   Margin="0, 0, 0, 40" />
+
+            <!-- Buttons -->
+        <Button Text="Browse"
+                FontSize="18"
+                TextColor="Black"
+                BackgroundColor="White"
+                CornerRadius="10"
+                WidthRequest="150"
+                HeightRequest="50"
+                Margin="0, 10"
+                Clicked="OnBrowseClicked" />
+        <Button Text="Database"
+                FontSize="18"
+                TextColor="Black"
+                BackgroundColor="White"
+                CornerRadius="10"
+                WidthRequest="150"
+                HeightRequest="50"
+                Margin="0, 10" />
+        <Button Text="About"
+                FontSize="18"
+                TextColor="Black"
+                BackgroundColor="White"
+                CornerRadius="10"
+                WidthRequest="150"
+                HeightRequest="50"
+                Margin="0, 10" />
+        <Button Text="Settings"
+                FontSize="18"
+                TextColor="Black"
+                BackgroundColor="White"
+                CornerRadius="10"
+                WidthRequest="150"
+                HeightRequest="50"
+                Margin="0, 10" />
+        <Button Text="Exit"
+                FontSize="18"
+                TextColor="Black"
+                BackgroundColor="White"
+                CornerRadius="10"
+                WidthRequest="150"
+                HeightRequest="50"
+                Margin="0, 10"
+                Clicked="OnExitButtonClicked" />
+
+            <!-- Book List -->
+        <CollectionView x:Name="BookListView"
+                        VerticalOptions="FillAndExpand"
+                        HorizontalOptions="FillAndExpand"
+                        Margin="0, 20">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="10"
+                           Padding="10"
+                           BackgroundColor="White"
+                           CornerRadius="10"
+                           HasShadow="True">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Title}" FontSize="20" TextColor="Black" />
+                            <Label Text="{Binding Notes}" FontSize="14" TextColor="Gray" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+    </VerticalStackLayout>
+   </Grid>
+</ContentPage>

@@ -1,0 +1,60 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PoirotCollectionApp.BrowsePage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10">
+            <!-- Back button -->
+            <Button Text="Back"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    FontSize="14"
+                    HorizontalOptions="Start"
+                    Margin="10,0"
+                    Clicked="OnBackButtonClicked" />
+
+            <!-- User information -->
+            <Label Text="{Binding UserName}"
+                    FontSize="20"
+                    HorizontalOptions="Center" 
+                    Margin="0,-10,-28,0" />
+            <Button Text="Change User"
+                    HorizontalOptions="Center"
+                    Margin="0,05,-18,0"
+                    Clicked="OnChangeUserClicked" />
+
+            <!-- Filter buttons -->
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button x:Name="OwnedButton" Text="Owned" Margin="0,02,02,0" Clicked="FilterOwned" />
+                <Button x:Name="WishlistButton" Text="Wishlist" Margin="00,02,02,0" Clicked="FilterWishlist" />
+                <Button x:Name="AllButton" Text="All" Margin="0,02,02,0" Clicked="FilterAll" />
+            </HorizontalStackLayout>
+
+            <!-- Search Bar for filtering books -->
+            <SearchBar x:Name="SearchBar"
+                    Placeholder="Search for a book..."
+                    TextChanged="OnSearchBarTextChanged"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="10,0,1000,0" />
+
+
+            <!-- ListView to display books -->
+            <ListView x:Name="BooksListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <!-- Book Title -->
+                                <Label Text="{Binding Title}"
+                                       FontSize="18"
+                                       FontAttributes="Bold" />
+                                <!-- Book Description or Notes -->
+                                <Label Text="{Binding Notes}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
