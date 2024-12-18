@@ -88,33 +88,36 @@ namespace PoirotCollectionApp.DataAccess
                 // Add filter for "Owned" books
                 if (filter == "Owned")
                 {
-                    query += " AND Owned = 1"; // Only owned books
+                    query += " AND Owned = 1"; 
                 }
+                
                 // Add filter for "Wishlist" books
                 else if (filter == "Wishlist")
                 {
-                    query += " AND Wishlist = 1"; // Only wishlist books
+                    query += " AND Wishlist = 1"; 
                 }
 
-                using (var command = new MySqlCommand(query, connection)) // Set up the query
+                // Set up the query
+                using (var command = new MySqlCommand(query, connection)) 
                 {
                     command.Parameters.AddWithValue("@UserID", userId); // Add user ID to the query
 
-                    using (var reader = await command.ExecuteReaderAsync()) // Run the query
+                    // Run the query
+                    using (var reader = await command.ExecuteReaderAsync()) 
                     {
                         while (await reader.ReadAsync())
                         {
                             // Add each book to the list
                             books.Add(new PoirotCollection
                             {
-                                UserID = reader.GetInt32("UserID"), // User ID
-                                BookID = reader.GetInt32("BookID"), // Book ID
-                                Title = reader.GetString("Title"), // Book title
-                                ReleaseDate = reader.IsDBNull("ReleaseDate") ? (DateTime?)null : reader.GetDateTime("ReleaseDate"), // Release date
-                                Notes = reader.IsDBNull("Notes") ? string.Empty : reader.GetString("Notes"), // Notes 
-                                CoverImagePath = reader.IsDBNull("CoverImagePath") ? string.Empty : reader.GetString("CoverImagePath"), // Cover image 
-                                Owned = reader.GetBoolean("Owned"), // Owned flag
-                                Wishlist = reader.GetBoolean("Wishlist") // Wishlist flag
+                                UserID = reader.GetInt32("UserID"), 
+                                BookID = reader.GetInt32("BookID"), 
+                                Title = reader.GetString("Title"), 
+                                ReleaseDate = reader.IsDBNull("ReleaseDate") ? (DateTime?)null : reader.GetDateTime("ReleaseDate"), 
+                                Notes = reader.IsDBNull("Notes") ? string.Empty : reader.GetString("Notes"), 
+                                CoverImagePath = reader.IsDBNull("CoverImagePath") ? string.Empty : reader.GetString("CoverImagePath"), // Book cover
+                                Owned = reader.GetBoolean("Owned"), 
+                                Wishlist = reader.GetBoolean("Wishlist") 
                             });
                         }
                     }

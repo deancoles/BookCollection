@@ -66,11 +66,28 @@ namespace PoirotCollectionApp
             }
         }
 
+        // Event handler for the Database button
+        private async void OnDatabaseClicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Database", "Here you would view and manage your database.", "OK");
+        }
+
+        // Event handler for the About button
+        private async void OnAboutClicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("About ", "Version 1.4", "OK");
+        }
+
+        // Event handler for the Settings button
+        private async void OnSettingsClicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Settings", "Here you would adjust your application settings.", "OK");
+        }
+
 
         // Exit button behaviour
         private async void OnExitButtonClicked(object sender, EventArgs e)
         {
-            // Show a confirmation dialog to the user
             bool answer = await DisplayAlert("Exit", "Do you want to close the application?", "Yes", "No");
 
             // Close the application based on the platform
