@@ -16,6 +16,7 @@ namespace PoirotCollectionApp
             _audioController = audioController;
 
             InitializeMusic(); // Start music initialization
+
         }
 
         // Method to initialize and play music
@@ -75,7 +76,7 @@ namespace PoirotCollectionApp
         // Event handler for the About button
         private async void OnAboutClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("About ", "Version 1.4", "OK");
+            await DisplayAlert("About", "Version 1.4", "OK");
         }
 
         // Event handler for the Settings button

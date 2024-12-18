@@ -30,12 +30,29 @@
                 <Button x:Name="AllButton" Text="All" Margin="0,02,02,0" Clicked="FilterAll" />
             </HorizontalStackLayout>
 
-            <!-- Search Bar for filtering books -->
-            <SearchBar x:Name="SearchBar"
-                    Placeholder="Search for a book..."
+            <!-- SearchBar and SortButton -->
+            <HorizontalStackLayout Margin="10,0,10,0">
+                
+                <!-- Search -->
+                <SearchBar x:Name="SearchBar"
+                    Placeholder="Search books..."
                     TextChanged="OnSearchBarTextChanged"
-                    HorizontalOptions="FillAndExpand"
-                    Margin="10,0,1000,0" />
+                    HorizontalOptions="FillAndExpand" />
+
+                <!-- Sort -->
+                <Button x:Name="SortButton"
+                    Text="A-Z"
+                    WidthRequest="70"
+                    HorizontalOptions="End"
+                    Clicked="OnSortButtonClicked" />
+            </HorizontalStackLayout>
+
+            <!-- Indicator Label -->
+            <Label x:Name="SortIndicatorLabel"
+                    Text="Currently sorted by: Year"
+                    HorizontalOptions="Center"
+                    FontSize="12"
+                    TextColor="Gray" />
 
 
             <!-- ListView to display books -->
